@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fruit Identifier</title>
+</head>
+<body>
+  <h2>Upload a fruit image</h2>
+  <input type="file" id="imageInput" accept="image/*">
+  <button onclick="uploadImage()">Identify</button>
+  <p id="result"></p>
+
+  <script>
+    function uploadImage() {
+      const fileInput = document.getElementById('imageInput');
+      const file = fileInput.files[0];
+      const formData = new FormData();
+      formData.append('file', file); // this must be 'file'
+
+      fetch('http://localhost:5000/predict', {
+        method: 'POST',
+        body: formData,
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('result').textContent = `Prediction: ${data.prediction}`;
+      })
+      .catch(err => {
+        document.getElementById('result').textContent = `Error: ${err.message}`;
+      });
+    }
+  </script>
+</body>
+</html>
