@@ -28,6 +28,11 @@ $python backend.py
 just double click ImgClassifier.html in the directory.
 
 
+4. exiting virtual envirnment
+   
+   $deactivate
+
+
 
 
 
