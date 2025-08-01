@@ -104,7 +104,8 @@
       })
         .then(res => res.json())
         .then(data => {
-          document.getElementById('result').textContent = `🍓 Prediction: ${data.prediction}`;
+          document.getElementById('result').textContent =
+            `🍓 Fruit: ${data.fruit}\n🍽️ Variation: ${data.variation}`;
         })
         .catch(err => {
           document.getElementById('result').textContent = `❌ Error: ${err.message}`;
