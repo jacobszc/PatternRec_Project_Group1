@@ -1,34 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fruit Identifier</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url("fruit-bg.jpg") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .custom-file-label {
+      display: inline-block;
+      background: #ff7f50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 15px;
+      transition: background 0.3s ease;
+    }
+
+    .custom-file-label:hover {
+      background: #ff5722;
+    }
+
+    button {
+      background: #4caf50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #388e3c;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-  <h2>Upload a fruit image</h2>
-  <input type="file" id="imageInput" accept="image/*">
-  <button onclick="uploadImage()">Identify</button>
-  <p id="result"></p>
+  <div class="container">
+    <h2>Fruit Image Classifier</h2>
+    <label for="imageInput" class="custom-file-label">🍌 Choose Image</label>
+    <input type="file" id="imageInput" accept="image/*" class="file-input" />
+    <br />
+    <button onclick="uploadImage()">🍍 Identify</button>
+    <p id="result"></p>
+  </div>
 
   <script>
     function uploadImage() {
       const fileInput = document.getElementById('imageInput');
       const file = fileInput.files[0];
+
+      if (!file) {
+        document.getElementById('result').textContent = "Please select an image first.";
+        return;
+      }
+
       const formData = new FormData();
-      formData.append('file', file); // this must be 'file'
+      formData.append('file', file);
+
+      document.getElementById('result').textContent = "🥭 Processing...";
 
       fetch('http://localhost:5000/predict', {
         method: 'POST',
         body: formData,
       })
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('result').textContent = `Prediction: ${data.prediction}`;
-      })
-      .catch(err => {
-        document.getElementById('result').textContent = `Error: ${err.message}`;
-      });
+        .then(res => res.json())
+        .then(data => {
+          document.getElementById('result').textContent = `🍓 Prediction: ${data.prediction}`;
+        })
+        .catch(err => {
+          document.getElementById('result').textContent = `❌ Error: ${err.message}`;
+        });
     }
+
+    // Update label text on file selection
+    document.getElementById('imageInput').addEventListener('change', function () {
+      if (this.files.length > 0) {
+        document.querySelector('.custom-file-label').textContent = `📷 ${this.files[0].name}`;
+      }
+    });
   </script>
 </body>
 </html>
