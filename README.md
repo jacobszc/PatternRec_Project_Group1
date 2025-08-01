@@ -17,7 +17,7 @@ $pip install -r requirements.txt
 
 $python backend.py
 
- you should see soething like  -> Running on http://127.0.0.1:5000/
+ you should see something like  -> Running on http://127.0.0.1:5000/
 
 3. open ImgClassifier.html
    
