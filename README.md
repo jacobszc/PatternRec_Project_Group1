@@ -8,7 +8,11 @@ ImgClassifier.html is the link to the working fruit image classification website
 1. **Install dependencies**:
 
 $python -m venv venv
-$source venv/bin/activate  # On Windows: venv\Scripts\activate
+$source venv/bin/activate  # On Windows: venv\Scripts\activate  
+
+the above steps will create a python virtual env to avoid dependecy issues if needed.
+
+
 
 $pip install -r requirements.txt
 
@@ -27,5 +31,25 @@ just double click ImgClassifier.html in the directory.
 
 
 
+optional: running python server
 
-Hanwen Dong - part2 - NLP Engineer: Semantic Model for Recipe Retrieval
+-split terminal
+
+-in first terminal have backend.py running
+
+- in second terminal run $python -m http.server 8000
+
+in your browser copy paste http://localhost:8000/ImgClassifier.html
+
+
+
+SAMPLE IMAGES TO TEST ON:
+there is a folder in the directory named sampleImgs. This folder contains a few images that you can use to test the classifier if you dont have your own handy! 
+
+
+
+
+
+
+
+
