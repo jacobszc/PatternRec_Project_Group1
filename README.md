@@ -27,7 +27,9 @@ $python backend.py
    
 just double click ImgClassifier.html in the directory
 
+https://jacobszc.github.io/PatternRec_Project_Group1/ImgClassifier.html
 
+remember the above link will direct you to the webpage but wont be able to fetch results unless backend.py is running.
 
 
 1. exiting virtual envirnment
