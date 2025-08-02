@@ -25,10 +25,12 @@ $python backend.py
 
 3. open ImgClassifier.html
    
-just double click ImgClassifier.html in the directory.
+just double click ImgClassifier.html in the directory
 
 
-4. exiting virtual envirnment
+
+
+1. exiting virtual envirnment
    
    $deactivate
 
@@ -50,6 +52,11 @@ in your browser copy paste http://localhost:8000/ImgClassifier.html
 
 SAMPLE IMAGES TO TEST ON:
 there is a folder in the directory named sampleImgs. This folder contains a few images that you can use to test the classifier if you dont have your own handy! 
+
+
+
+
+Hanwen Dong- Part 2 - NLP Engineer
 
 
 
